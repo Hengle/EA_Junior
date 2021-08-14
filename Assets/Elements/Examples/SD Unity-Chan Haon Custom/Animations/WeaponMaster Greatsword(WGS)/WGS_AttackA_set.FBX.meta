@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: f3876e8ab78bf1441bf95b398e853fd0
 ModelImporter:
-  serializedVersion: 21100
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -822,7 +822,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5635623
+      - time: 0.595122
         functionName: EventSkillReady
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -1110,7 +1110,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.46481183
+      - time: 0.5691058
         functionName: EventSkillReady
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -1398,7 +1398,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7188632
+      - time: 0.6764228
         functionName: EventSkillReady
         data: 
         objectReferenceParameter: {instanceID: 0}

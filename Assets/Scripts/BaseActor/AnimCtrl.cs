@@ -4,19 +4,29 @@ public class AnimCtrl : MonoBehaviour
 {
     #region Sys Funcs
 
+    public Vector2[] animPerArray;
+
     public AnimatorManager animatorMgr;
-    Animator _anim;
-    public Animator Anim => (_anim);
+    Animator _Anim;
+    public Animator Anim => (_Anim);
     int curAnimAttackIndex = 1;
     int MinAnimAttackIndex = 1;
     int MaxAnimAttackIndex = 3;
     string curAnimName;
     string attackPre = "Base Layer.Attack";
     bool isReady = true;
+
+    EmmaSword weaponInst;
+
+    bool _IsPlaying;
+    public bool IsPlaying => (_IsPlaying);
     private void Start()
     {
-        _anim = GetComponent<Animator>();
+        _Anim = GetComponent<Animator>();
         animatorMgr.OnStart(this);
+        var weaponGo = GlobalHelper.FindGoByName(gameObject, "greatesword");
+        if (null != weaponGo) weaponInst = weaponGo.GetComponent<EmmaSword>();
+        
     }
     private void Update()
     {
@@ -45,22 +55,34 @@ public class AnimCtrl : MonoBehaviour
         if (!isReady) return;
         if (curAnimAttackIndex > MaxAnimAttackIndex) curAnimAttackIndex = MinAnimAttackIndex;
         curAnimName = attackPre + curAnimAttackIndex.ToString();
-        animatorMgr.StartAnimation(curAnimName,CastSkillReady,CastSkillBegin,CastSkillEnd);
+        animatorMgr.StartAnimation(curAnimName,CastSkillReady,CastSkillBegin,CastSkillEnd,CastSkillEnd1);
     }
 
     void CastSkillBegin()
     {
+        _IsPlaying = true;
         isReady = false;
+        //计算攻击index
         curAnimAttackIndex++;
-        //加载特效
-
-        //计算当前攻击index
     }
 
     void CastSkillEnd()
     {
         curAnimAttackIndex = MinAnimAttackIndex;
+        _IsPlaying = false;
         isReady = true;
+    }
+    void CastSkillEnd1()
+    {
+        //Weapon Ctrol
+        if(curAnimAttackIndex <= 1)
+        {
+            Debug.LogError("Log Error");
+            return;
+        }
+        var item = animPerArray[curAnimAttackIndex - 2];
+
+         weaponInst.OnStartWeaponCtrl(Anim, item.x,item.y);
     }
 
     #endregion

@@ -8,15 +8,18 @@ public class MovementInput : MonoBehaviour
     private void Start()
     {
         Cam = Camera.main;
+        animCtrlInst = GetComponent<AnimCtrl>();
     }
     // Update is called once per frame
     void Update()
     {
-        SetPlayerAnimMovePam();
+        if(CanMove())
+            SetPlayerAnimMovePam();
     }
     #endregion
 
     #region Player Animation Controller
+    private AnimCtrl animCtrlInst;
     public Animator Anim;
     public CharacterController CharCtrl;
     public float MoveSpeed;
@@ -29,6 +32,12 @@ public class MovementInput : MonoBehaviour
     float s2;
 
     Camera Cam;
+
+    bool CanMove()
+    {
+        return !animCtrlInst.IsPlaying;
+    }
+
     void SetPlayerAnimMovePam()
     {
 #if UNITY_EDITOR
