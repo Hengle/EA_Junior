@@ -4,6 +4,11 @@ public class MovementInput : MonoBehaviour
 {
 
     #region System Function
+
+    private void Start()
+    {
+        Cam = Camera.main;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +27,8 @@ public class MovementInput : MonoBehaviour
     float speed;
     float s1;
     float s2;
+
+    Camera Cam;
     void SetPlayerAnimMovePam()
     {
 #if UNITY_EDITOR
@@ -56,8 +63,8 @@ public class MovementInput : MonoBehaviour
     void PlayerCtrlMovement(float x, float z)
     {
 
-        var dir = x * Vector3.right + z * Vector3.forward;
-
+        var dir = x * Cam.transform.right + z * Cam.transform.forward;
+        dir.y = 0;
 
         transform.forward = dir;
 
