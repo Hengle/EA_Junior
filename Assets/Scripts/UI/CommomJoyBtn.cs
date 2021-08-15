@@ -1,26 +1,43 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using AttTypeDefine;
 
 public class CommomJoyBtn : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    #region Sys Funcs
+    private void Awake()
+    {
+        pressDown = new GameBtnEvent();
+        onDragEvent = new GameBtnEvent();
+        pressUp = new GameBtnEvent();
+    }
+    #endregion
     #region Joy Stick Event Callback
-    public Transform transBackground;
-    public Transform transHandle;
+    public Image imageBackGround;
+    public Image imageHandle;
     public float maxRadius;
 
-    Vector3 _Dir;
+    public GameBtnEvent pressDown;
+    public GameBtnEvent onDragEvent;
+    public GameBtnEvent pressUp;
+
+    protected Vector3 _Dir;
     public Vector3 Dir => (_Dir);
 
     Vector3 pointDownPos;
     int FingerId = int.MinValue;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if((FingerId = eventData.pointerId) < -1)
         {
             return;
         }
-        transBackground.position = pointDownPos = eventData.position;
+        imageBackGround.transform.position = pointDownPos = eventData.position;
+        pressDown?.Invoke(eventData);
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -37,8 +54,10 @@ public class CommomJoyBtn : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
             x = tmp.x, 
             y = tmp.y
         };
-        transHandle.localPosition = localPos;
-        _Dir = transHandle.localPosition.normalized;
+        imageHandle.transform.localPosition = localPos;
+        _Dir = imageHandle.transform.localPosition.normalized;
+
+        onDragEvent?.Invoke(eventData);
     }
 
 
@@ -48,7 +67,9 @@ public class CommomJoyBtn : MonoBehaviour, IPointerDownHandler, IDragHandler, IP
         {
             return;
         }
-        _Dir = transHandle.localPosition = Vector3.zero;
+        _Dir = imageHandle.transform.localPosition = Vector3.zero;
+
+        pressUp?.Invoke(eventData);
     }
     #endregion
 }

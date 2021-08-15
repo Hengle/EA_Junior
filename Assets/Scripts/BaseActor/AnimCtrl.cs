@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AnimCtrl : MonoBehaviour
 {
-    #region Sys Funcs
 
+    #region Paras
     public Vector2[] animPerArray;
+    public UI_JoyStick joyStickInst;
 
     public AnimatorManager animatorMgr;
     Animator _Anim;
@@ -20,13 +22,23 @@ public class AnimCtrl : MonoBehaviour
 
     bool _IsPlaying;
     public bool IsPlaying => (_IsPlaying);
+    #endregion
+
+    #region Sys Funcs
     private void Start()
     {
         _Anim = GetComponent<Animator>();
         animatorMgr.OnStart(this);
         var weaponGo = GlobalHelper.FindGoByName(gameObject, "greatesword");
-        if (null != weaponGo) weaponInst = weaponGo.GetComponent<EmmaSword>();
-        
+        if (null != weaponGo)
+        {
+            weaponInst = weaponGo.GetComponent<EmmaSword>();
+            weaponInst.OnStart(this);
+        }
+
+        joyStickInst.finalSkillBtnInst.pressDown.AddListener((a)=>OnFinalSkillBegin(a));
+        joyStickInst.finalSkillBtnInst.onDragEvent.AddListener((a)=>OnFinalSkillDrag(a));
+        joyStickInst.finalSkillBtnInst.pressUp.AddListener((a)=>OnFinalSkillEnd(a));
     }
     private void Update()
     {
@@ -34,6 +46,7 @@ public class AnimCtrl : MonoBehaviour
     }
     
     #endregion
+
     #region Cast Attack
 
     void UpdateSkillInput()
@@ -77,12 +90,34 @@ public class AnimCtrl : MonoBehaviour
         //Weapon Ctrol
         if(curAnimAttackIndex <= 1)
         {
-            Debug.LogError("Log Error");
-            return;
+            //Debug.LogError("Log Error");
+            // return;
+            curAnimAttackIndex = 2;
         }
         var item = animPerArray[curAnimAttackIndex - 2];
 
          weaponInst.OnStartWeaponCtrl(Anim, item.x,item.y);
+    }
+
+    #endregion
+
+    #region FinalSkill
+    public void ModifyFSV()
+    {
+        //increase angry value. -> UI
+        joyStickInst.OnModifyFSV();
+    }
+    public void OnFinalSkillBegin(PointerEventData data)
+    {
+        Debug.Log("OnFinalSkillBegin");
+    }
+    public void OnFinalSkillDrag(PointerEventData data)
+    {
+        Debug.Log("OnFinalSkillDrag");
+    }
+    public void OnFinalSkillEnd(PointerEventData data)
+    {
+        Debug.Log("OnFinalSkillEnd");
     }
 
     #endregion

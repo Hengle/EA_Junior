@@ -24,6 +24,11 @@ public class EmmaSword : MonoBehaviour
     #endregion
 
     #region Weapon Manager
+    AnimCtrl animCtrlInst;
+    public void OnStart(AnimCtrl animCtrl)
+    {
+        animCtrlInst = animCtrl;
+    }
     public void OnStartWeaponCtrl(Animator _anim,float _startPer,float _endPer)
     {
         //检测当前动画的百分比
@@ -56,6 +61,18 @@ public class EmmaSword : MonoBehaviour
 
     }
 
+
     //在有效活性期间内，如果碰到敌人，直接关闭活性
+    private void OnTriggerEnter(Collider other)
+    {
+        var enemyActor = other.gameObject.GetComponent<NpcActor>();
+        if(null != enemyActor)
+        {
+            enemyActor.GetHit();
+
+            //player increase angry value
+            animCtrlInst.ModifyFSV();
+        }
+    }
     #endregion
 }
