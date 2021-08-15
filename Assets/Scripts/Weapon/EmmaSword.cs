@@ -71,7 +71,7 @@ public class EmmaSword : MonoBehaviour
             enemyActor.GetHit();
 
             //player increase angry value
-            animCtrlInst.ModifyFSV();
+            animCtrlInst.ModifyFSV(25);
         }
     }
     #endregion

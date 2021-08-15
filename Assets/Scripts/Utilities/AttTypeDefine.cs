@@ -8,6 +8,12 @@ namespace AttTypeDefine{
         eTrigBegin,
         eTrigEnd,
     };
+    
+    public enum eSkillType
+    {
+        eAttack = 0,
+        eSkill1
+    };
 
     public class GameEvent : UnityEvent { };
     public class GameBtnEvent : UnityEvent<PointerEventData> { };
