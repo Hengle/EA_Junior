@@ -21,6 +21,7 @@ public class AnimCtrl : MonoBehaviour
     string curAnimName;
     string attackPre = "Base Layer.Attack";
     string skillPre = "Base Layer.Skill";
+    string skillPrePath = "Skills/";
     bool isReady = true;
     bool isFinishFinalSkill = false;
 
@@ -103,6 +104,14 @@ public class AnimCtrl : MonoBehaviour
         if (skillType == eSkillType.eAttack)
         {
             isReady = false;
+            //加载特效
+            //规则判定：动画如何与特效绑定在一起，怎么知道播放a动画，加载a特效？
+            //1001
+            var path = skillPrePath + (1000 + curAnimAttackIndex).ToString();
+            var skillPrefab = GlobalHelper.InstantiateMyPrefab(path,transform.position + Vector3.up * 1f,Quaternion.identity);
+
+            var skillInfo = skillPrefab.GetComponent<SEAction_SkillInfo>();
+            skillInfo.SetOwner(gameObject);
             //计算攻击index
             curAnimAttackIndex++;
         }
