@@ -7,6 +7,8 @@ public class AnimCtrl : MonoBehaviour
 
     #region Paras
     public Vector2[] animPerArray;
+    public Vector2[] animSkillPerArray;
+    Vector2 item;
     public UI_JoyStick joyStickInst;
     FinalSkillBtn finalSkillInst;
 
@@ -20,6 +22,7 @@ public class AnimCtrl : MonoBehaviour
     string attackPre = "Base Layer.Attack";
     string skillPre = "Base Layer.Skill";
     bool isReady = true;
+    bool isFinishFinalSkill = false;
 
     Camera Cam;
 
@@ -127,10 +130,14 @@ public class AnimCtrl : MonoBehaviour
             }
             if (skillType == eSkillType.eAttack)
             {
-                var item = animPerArray[curAnimAttackIndex - 2];
+                item = animPerArray[curAnimAttackIndex - 2];
 
                 weaponInst.OnStartWeaponCtrl(Anim, item.x, item.y);
             }
+        }
+        else if (skillType == eSkillType.eSkill1)
+        {
+            item = animSkillPerArray[(int)(skillType - 1)];
         }
     }
 
@@ -152,6 +159,8 @@ public class AnimCtrl : MonoBehaviour
         if (isUsingSkill) return;
         isUsingSkill = false;
 
+        isFinishFinalSkill = true;
+
         Time.timeScale = 0.1f;
         _GroundArrow.SetActive(true);
 
@@ -163,6 +172,9 @@ public class AnimCtrl : MonoBehaviour
     }
     public void OnFinalSkillDrag(PointerEventData data)
     {
+        if (!isFinishFinalSkill)
+            return;
+
         finalSkillDir = finalSkillInst.Dir.x * Cam.transform.right + finalSkillInst.Dir.y * Cam.transform.forward;
         if (finalSkillDir == Vector3.zero) finalSkillDir = transform.forward;
         finalSkillDir.y = 0;
@@ -171,6 +183,9 @@ public class AnimCtrl : MonoBehaviour
     }
     public void OnFinalSkillEnd(PointerEventData data)
     {
+        if (!isFinishFinalSkill)
+            return;
+
         Time.timeScale = 1.0f;
 
         _GroundArrow.SetActive(false);
@@ -184,6 +199,7 @@ public class AnimCtrl : MonoBehaviour
         var finalPos = transform.position + _GroundArrow.transform.forward * finalSkillDis;
         transform.DOMove(finalPos,0.7f).OnComplete(()=> {
             isUsingSkill = false;
+            isFinishFinalSkill = false;
         });
         transform.DOLookAt(finalPos,0.35f);
     }
