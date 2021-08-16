@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using AttTypeDefine;
 
 public class SEAction_SkillInfo : SEAction_BaseAction
 {
+    [HideInInspector]
+    public eSkillBlindType skillBlindType;
+    [HideInInspector ]
+    public string objName;
     public override void TrigAction()
     {
         base.TrigAction();

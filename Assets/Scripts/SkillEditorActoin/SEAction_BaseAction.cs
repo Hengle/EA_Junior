@@ -3,7 +3,9 @@ using AttTypeDefine;
 
 public class SEAction_BaseAction : MonoBehaviour
 {
+    [HideInInspector]
     public eTrigType trigType;
+    [HideInInspector]
     public float delay;
     float startTime = 0f;
     bool isTriggerd = false;

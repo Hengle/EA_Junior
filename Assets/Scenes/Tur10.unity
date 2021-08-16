@@ -1128,7 +1128,7 @@ MonoBehaviour:
   Anim: {fileID: 173922992}
   CharCtrl: {fileID: 263718047}
   MoveSpeed: 2.5
-  joyStick: {fileID: 0}
+  JoyStick: {fileID: 2082264009}
 --- !u!143 &263718047
 CharacterController:
   m_ObjectHideFlags: 0

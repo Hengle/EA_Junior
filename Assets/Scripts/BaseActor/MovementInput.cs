@@ -1,30 +1,31 @@
 using UnityEngine;
-
 public class MovementInput : MonoBehaviour
 {
-
     #region System Function
 
     private void Start()
     {
         Cam = Camera.main;
-        animCtrlInst = GetComponent<AnimCtrl>();
+
+        AnimCtrlInst = gameObject.GetComponent<AnimCtrl>();
+
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if(CanMove())
+        if (CanMove())
+        {
             SetPlayerAnimMovePam();
+        }
     }
     #endregion
 
     #region Player Animation Controller
-    private AnimCtrl animCtrlInst;
+    private AnimCtrl AnimCtrlInst;
     public Animator Anim;
     public CharacterController CharCtrl;
     public float MoveSpeed;
-    public UI_JoyStick joyStick;
-
+    public UI_JoyStick JoyStick;
     float horizontal;
     float vertical;
     float speed;
@@ -33,54 +34,62 @@ public class MovementInput : MonoBehaviour
 
     Camera Cam;
 
+
     bool CanMove()
     {
-        return !animCtrlInst.IsPlaying;
+
+        if (AnimCtrlInst.IsPlaying)//当前是否在播放攻击动画
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     void SetPlayerAnimMovePam()
     {
+
 #if UNITY_EDITOR
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
         s1 = Mathf.Sqrt(horizontal * horizontal + vertical * vertical); ;
-        s2 = null != joyStick ? joyStick.Dir.magnitude : 0;
+        s2 = null != JoyStick ? JoyStick.Dir.magnitude : 0;
 
         speed = s1 > s2 ? s1 : s2;
-
         if (s2 > s1)
         {
-            horizontal = joyStick.Dir.x;
-            vertical = joyStick.Dir.y;
+            horizontal = JoyStick.Dir.x;
+            vertical = JoyStick.Dir.y;
         }
 #else
-        int a = 0;
+        speed = JoyStick.Dir.magnitude;
 #endif
-        speed = Mathf.Sqrt(horizontal* horizontal + vertical * vertical);
 
         Anim.SetFloat("IdleAndRun", speed);
 
-        if(speed > 0.01f)
+        if (speed > 0.01f)
         {
             PlayerCtrlMovement(horizontal, vertical);
         }
-
-
     }
 
     void PlayerCtrlMovement(float x, float z)
     {
 
         var dir = x * Cam.transform.right + z * Cam.transform.forward;
-        dir.y = 0;
+
+        dir.y = 0f;
 
         transform.forward = dir;
 
         CharCtrl.Move(MoveSpeed * Time.deltaTime * dir);
     }
 
-#endregion
+    #endregion
 
-
+    #region GetHit
+    #endregion
 }

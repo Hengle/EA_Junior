@@ -5,13 +5,19 @@ using UnityEngine;
 public class SEActoin_SpawnWorld : SEAction_BaseAction
 {
     SEAction_DataStore se;
+
+    [HideInInspector]
     public GameObject effectspawnInst;
 
+    [HideInInspector]
     public string socketName;
 
+    [HideInInspector]
     public float effectDestroyDelay;
 
+    [HideInInspector]
     public Vector3 offSet;
+    [HideInInspector]
     public Vector3 offRot;
 
     GameObject owner;

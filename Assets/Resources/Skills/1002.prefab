@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3049444285116301961
+--- !u!1 &7165122397390682458
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3049444285116301960}
-  - component: {fileID: 8861041578826547909}
+  - component: {fileID: 7165122397390682457}
+  - component: {fileID: 7165122397390682456}
   m_Layer: 0
-  m_Name: 1001
+  m_Name: 1002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3049444285116301960
+--- !u!4 &7165122397390682457
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3049444285116301961}
+  m_GameObject: {fileID: 7165122397390682458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7621853284344142196}
+  - {fileID: 7165122397868302581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8861041578826547909
+--- !u!114 &7165122397390682456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3049444285116301961}
+  m_GameObject: {fileID: 7165122397390682458}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 929561ad8f5ee5649b906d1da0e147eb, type: 3}
@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigType: 0
   delay: 0.5
---- !u!1 &6726609725547721300
+  skillBlindType: 0
+  objName: 
+--- !u!1 &7165122397868302582
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,59 +56,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7621853284344142196}
-  - component: {fileID: 4969238644901851285}
-  - component: {fileID: 744676051232500274}
+  - component: {fileID: 7165122397868302581}
+  - component: {fileID: 7165122397868302579}
+  - component: {fileID: 7165122397868302580}
   m_Layer: 0
-  m_Name: SkillSlash
+  m_Name: SkillSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7621853284344142196
+--- !u!4 &7165122397868302581
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6726609725547721300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 7165122397868302582}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3049444285116301960}
+  m_Father: {fileID: 7165122397390682457}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4969238644901851285
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &7165122397868302579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6726609725547721300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6918350208eac14ebb8f6aa54d56ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigType: 0
-  delay: 0.2
-  effectspawnInst: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
-  socketName: Prop_03
-  effectDestroyDelay: 0.2
-  offSet: {x: 0, y: -0.5, z: 0}
-  offRot: {x: 0, y: 170, z: 5}
---- !u!114 &744676051232500274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6726609725547721300}
+  m_GameObject: {fileID: 7165122397868302582}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dc8a9dd3a5a8e24fb0840dd55f780f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+--- !u!114 &7165122397868302580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165122397868302582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6918350208eac14ebb8f6aa54d56ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigType: 0
+  delay: 0.15
+  effectspawnInst: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  socketName: Prop_03
+  effectDestroyDelay: 0.2
+  offSet: {x: 0, y: 0.2, z: 0}
+  offRot: {x: 0, y: 60, z: 20}

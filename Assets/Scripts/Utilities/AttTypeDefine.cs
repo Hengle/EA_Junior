@@ -4,6 +4,11 @@ using UnityEngine.EventSystems;
 namespace AttTypeDefine{
     public delegate void NotifySkill();
 
+    public enum eSkillBlindType
+    {
+        eEffectWorld,
+        eEffectOwner,
+    }
     public enum eTrigType
     {
         eAuto = 0,
