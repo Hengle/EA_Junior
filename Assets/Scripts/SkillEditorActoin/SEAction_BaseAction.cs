@@ -19,7 +19,7 @@ public class SEAction_BaseAction : MonoBehaviour
         }
     }
 
-    public void OnStart()
+    public virtual void OnStart()
     {
         if(trigType == eTrigType.eCondition)
         {
@@ -28,7 +28,7 @@ public class SEAction_BaseAction : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!isTriggerd) return;
         if (Time.time - startTime >= delay)
@@ -41,5 +41,11 @@ public class SEAction_BaseAction : MonoBehaviour
     public virtual void TrigAction()
     {
 
+    }
+
+    public SEAction_DataStore GetDataStore()
+    {
+        var ds = gameObject.GetComponent<SEAction_DataStore>();
+        return ds;
     }
 }

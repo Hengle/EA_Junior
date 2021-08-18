@@ -8,6 +8,7 @@ namespace AttTypeDefine{
     {
         eEffectWorld,
         eEffectOwner,
+        eDamageOwner,
     }
     public enum eTrigType
     {
@@ -25,6 +26,13 @@ namespace AttTypeDefine{
         eAttack = 0,
         eSkill1
     };
+
+    public enum ePlayerSide
+    {
+        ePlayer,
+        eEnemy,
+        eNPC,
+    }
 
     public class GameEvent : UnityEvent { };
     public class GameBtnEvent : UnityEvent<PointerEventData> { };

@@ -29,6 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7621853284344142196}
+  - {fileID: 7477857746423306174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,7 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigType: 0
-  delay: 0.5
+  delay: 1
+  skillBlindType: 2
+  objName: 
 --- !u!1 &6726609725547721300
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +61,7 @@ GameObject:
   - component: {fileID: 4969238644901851285}
   - component: {fileID: 744676051232500274}
   m_Layer: 0
-  m_Name: SkillSlash
+  m_Name: SkillSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,3 +113,117 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  target: {fileID: 0}
+  skillInfo: {fileID: 0}
+  buffInfo: {fileID: 0}
+--- !u!1 &8122186436263415903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7477857746423306174}
+  - component: {fileID: 1072966951948476585}
+  - component: {fileID: 6344330844940165330}
+  - component: {fileID: 4560713998556814431}
+  - component: {fileID: 5337947631542467190}
+  - component: {fileID: 4168361943248642313}
+  m_Layer: 0
+  m_Name: DamageOwner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7477857746423306174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3049444285116301960}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072966951948476585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc8a9dd3a5a8e24fb0840dd55f780f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  skillInfo: {fileID: 0}
+  buffInfo: {fileID: 0}
+--- !u!114 &6344330844940165330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05040767426a3b4aa69677f5bf508d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigType: 0
+  delay: 0
+  trigBuffInst: {fileID: 4168361943248642313}
+  socketName: Prop_03
+  offSet: {x: 0, y: 0, z: 0}
+  offRot: {x: 0, y: 0, z: 0}
+--- !u!114 &4560713998556814431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89369255e2e46174695fad89ffb257d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigType: 0
+  delay: 1
+--- !u!65 &5337947631542467190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 2}
+  m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &4168361943248642313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122186436263415903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de5af796d5d0b5468445a311dca2f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigType: 1
+  delay: 0
+  buffID: 100101

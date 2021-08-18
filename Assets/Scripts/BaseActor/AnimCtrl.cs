@@ -2,19 +2,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using AttTypeDefine;
 using DG.Tweening;
-public class AnimCtrl : MonoBehaviour
+public class AnimCtrl : BasePlayer
 {
 
     #region Paras
-    public Vector2[] animPerArray;
-    public Vector2[] animSkillPerArray;
     Vector2 item;
     public UI_JoyStick joyStickInst;
+
+    public int TYPEID = 1000;
+
     FinalSkillBtn finalSkillInst;
 
     public AnimatorManager animatorMgr;
-    Animator _Anim;
-    public Animator Anim => (_Anim);
     int curAnimAttackIndex = 1;
     int MinAnimAttackIndex = 1;
     int MaxAnimAttackIndex = 3;
@@ -27,7 +26,7 @@ public class AnimCtrl : MonoBehaviour
 
     Camera Cam;
 
-    EmmaSword weaponInst;
+    //EmmaSword weaponInst;
 
     bool _IsPlaying;
     public bool IsPlaying => (_IsPlaying);
@@ -38,21 +37,23 @@ public class AnimCtrl : MonoBehaviour
     #region Sys Funcs
 
 
-    private void Start()
+    protected override void Start()
     {
-        _Anim = GetComponent<Animator>();
+        base.Start();
+
+        typeId = TYPEID;
         animatorMgr.OnStart(this);
 
         finalSkillInst = joyStickInst.finalSkillBtnInst;
 
         Cam = Camera.main;
 
-        var weaponGo = GlobalHelper.FindGoByName(gameObject, "greatesword");
-        if (null != weaponGo)
-        {
-            weaponInst = weaponGo.GetComponent<EmmaSword>();
-            weaponInst.OnStart(this);
-        }
+       //var weaponGo = GlobalHelper.FindGoByName(gameObject, "greatesword");
+       // if (null != weaponGo)
+       // {
+       //     weaponInst = weaponGo.GetComponent<EmmaSword>();
+       //     weaponInst.OnStart(this);
+       // }
 
         joyStickInst.finalSkillBtnInst.pressDown.AddListener((a) => OnFinalSkillBegin(a));
         joyStickInst.finalSkillBtnInst.onDragEvent.AddListener((a) => OnFinalSkillDrag(a));
@@ -129,25 +130,25 @@ public class AnimCtrl : MonoBehaviour
     }
     void CastSkillEnd1()
     {
-        if (skillType == eSkillType.eAttack)
-        {
-            if (curAnimAttackIndex <= 1)
-            {
-                //Debug.LogError("Log Error");
-                // return;
-                curAnimAttackIndex = 2;
-            }
-            if (skillType == eSkillType.eAttack)
-            {
-                item = animPerArray[curAnimAttackIndex - 2];
+        //if (skillType == eSkillType.eAttack)
+        //{
+        //    if (curAnimAttackIndex <= 1)
+        //    {
+        //        //Debug.LogError("Log Error");
+        //        // return;
+        //        curAnimAttackIndex = 2;
+        //    }
+        //    if (skillType == eSkillType.eAttack)
+        //    {
+        //        item = animPerArray[curAnimAttackIndex - 2];
 
-                weaponInst.OnStartWeaponCtrl(Anim, item.x, item.y);
-            }
-        }
-        else if (skillType == eSkillType.eSkill1)
-        {
-            item = animSkillPerArray[(int)(skillType - 1)];
-        }
+        //        weaponInst.OnStartWeaponCtrl(Anim, item.x, item.y);
+        //    }
+        //}
+        //else if (skillType == eSkillType.eSkill1)
+        //{
+        //    item = animSkillPerArray[(int)(skillType - 1)];
+        //}
     }
 
     #endregion

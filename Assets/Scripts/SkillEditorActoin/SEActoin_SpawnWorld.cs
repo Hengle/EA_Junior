@@ -46,7 +46,7 @@ public class SEActoin_SpawnWorld : SEAction_BaseAction
         effect.transform.rotation = socket.transform.rotation;
         effect.transform.Rotate(offRot,Space.Self);
 
-        effect.transform.position = owner.transform.position;
+        effect.transform.position = socket.transform.position;
         effect.transform.Translate(offSet,Space.Self);
         //修改特效的位置：当前的拥有者 + offset + rotoffset
 

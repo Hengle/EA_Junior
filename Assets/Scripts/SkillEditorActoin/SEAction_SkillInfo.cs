@@ -19,6 +19,7 @@ public class SEAction_SkillInfo : SEAction_BaseAction
         foreach(var i in ses)
         {
             i.owner = Owner;
+            i.skillInfo = this;
         }
     }
 }

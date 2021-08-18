@@ -1,3 +1,4 @@
+using System.Text;
 using UnityEngine;
 
 public class GlobalHelper 
@@ -29,5 +30,13 @@ public class GlobalHelper
         go.transform.localScale = Vector3.one;
         
         return go;
+    }
+
+    public static string CombingString(string a,string b)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(a);
+        sb.Append(b);
+        return sb.ToString();
     }
 }
