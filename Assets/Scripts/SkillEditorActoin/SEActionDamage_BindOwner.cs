@@ -102,7 +102,7 @@ public class SEActionDamage_BindOwner : SEAction_BaseAction
             var ds = GetDataStore();
             ds.target = ba.gameObject;
             trigBuffInst.OnStart();
-           // return;//如果只检测一次就return 否则可以用开关字段来判断
+          return;//如果只检测一次就return 否则可以用开关字段来判断
             //TrigBuff->实例化Buff
 
         }

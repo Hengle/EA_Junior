@@ -9,7 +9,7 @@ public class SEAction_TrigBuffEditor : SEAction_BaseActionEditor
 {
     private SEAction_TrigBuff owner;
 
-    string[] options2 = new string[] {"特效绑定世界", "特效绑定自己" ,"伤害绑定自己"};
+   // string[] options2 = new string[] {"特效绑定世界", "特效绑定自己" ,"伤害绑定自己"};
 
     private void Awake()
     {

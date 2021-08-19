@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8954300562317652550}
   - component: {fileID: 4274348002799730530}
   - component: {fileID: 7750999697887379763}
+  - component: {fileID: 6453119722513352827}
   m_Layer: 0
   m_Name: BuffDamage
   m_TagString: Untagged
@@ -47,8 +48,8 @@ MonoBehaviour:
   trigType: 0
   delay: 0
   effectspawnInst: {fileID: 182714, guid: 0a9aa7cbab47dd34fad18af6ec82969d, type: 3}
-  effectDestroyDelay: 0.6
-  effectScale: 10
+  effectDestroyDelay: 0.1
+  effectScale: 1
 --- !u!114 &7750999697887379763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +66,21 @@ MonoBehaviour:
   target: {fileID: 0}
   skillInfo: {fileID: 0}
   buffInfo: {fileID: 0}
+--- !u!114 &6453119722513352827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917143910359369157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e7aaec6d36f784193175e8834aa4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigType: 0
+  delay: 0
+  animID: 0
 --- !u!1 &2517979354909022952
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigType: 0
-  delay: 1
+  delay: 0.7

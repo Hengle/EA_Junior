@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigType: 1
-  delay: 0.5
+  delay: 0
 --- !u!1 &196832
 GameObject:
   m_ObjectHideFlags: 0

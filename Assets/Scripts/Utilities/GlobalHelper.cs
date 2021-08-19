@@ -1,3 +1,5 @@
+using BansheeGz.BGDatabase;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
@@ -39,4 +41,23 @@ public class GlobalHelper
         sb.Append(b);
         return sb.ToString();
     }
+
+    #region Table Sheets
+    public static T GetTheEntityByName<T>(string tableName, string name) where T : BGEntity
+    {
+
+        BGMetaEntity table = BGRepo.I[tableName];
+
+        List<BGEntity> result = table.FindEntities(
+                entity => !string.IsNullOrEmpty(entity.Name) && entity.Name == name) as List<BGEntity>;
+
+        if (result == null || result.Count == 0)
+        {
+            return null;
+        }
+        //Debug.Log(result[0] as T);
+        return result[0] as T;
+    }
+
+    #endregion
 }

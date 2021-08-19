@@ -34,6 +34,21 @@ namespace AttTypeDefine{
         eNPC,
     }
 
+    public enum eStateID
+    {
+        eNull = -1,
+        eGetHit,// ‹…À
+        eFlyAway,//ª˜∑…
+    }
+
+    public enum ePlayerAttr
+    {
+        eNull = -1,
+        eHP = 0,
+        eAttack = 1,
+        eSize = 2
+    }
+
     public class GameEvent : UnityEvent { };
     public class GameBtnEvent : UnityEvent<PointerEventData> { };
 }

@@ -36,6 +36,10 @@ public class AnimCtrl : BasePlayer
 
     #region Sys Funcs
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     protected override void Start()
     {
